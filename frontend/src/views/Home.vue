@@ -1,27 +1,18 @@
 <template>
   <div class="page-container">
+    <van-nav-bar title="首页" />
+
     <div class="content">
       <!-- 标题区 -->
       <div class="title-card">
-        <h2 style="margin: 0; font-size: 24px; font-weight: bold">
-          草药和红色精神问答
-        </h2>
-        <p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.8">
-          学习中草药知识，弘扬红色精神
-        </p>
+        <h2 class="title-main">红色草药问答</h2>
+        <p class="title-sub">学习中草药知识，弘扬红色精神</p>
       </div>
 
       <!-- 功能区 -->
       <div class="card">
         <h3 style="margin-bottom: 16px">开始答题</h3>
-        <van-button
-          type="primary"
-          size="large"
-          round
-          block
-          icon="fire"
-          @click="startQuiz"
-        >
+        <van-button type="primary" size="large" round block @click="startQuiz">
           随机抽题
         </van-button>
       </div>
@@ -66,8 +57,12 @@
           <van-col span="8">
             <van-button
               plain
-              type="danger"
               block
+              style="
+                color: #fff;
+                background: var(--primary-color);
+                border-color: var(--primary-color);
+              "
               @click="startQuizByDifficulty('hard')"
             >
               困难
@@ -131,11 +126,50 @@ onMounted(() => {
 
 .title-card {
   margin: 16px;
-  padding: 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 32px 24px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
-  color: white;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  border-left: 4px solid #c8102e;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.title-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.title-main {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  color: #c8102e;
+  letter-spacing: 1px;
+}
+
+.title-sub {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.title-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(200, 16, 46, 0.02) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  border-radius: 16px;
 }
 </style>

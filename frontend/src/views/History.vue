@@ -40,12 +40,25 @@
               style="
                 margin-top: 12px;
                 padding: 12px;
-                background: #f8f9fa;
-                border-radius: 4px;
+                background: linear-gradient(
+                  135deg,
+                  rgba(200, 16, 46, 0.05) 0%,
+                  rgba(255, 255, 255, 0.8) 100%
+                );
+                border-radius: 8px;
                 font-size: 13px;
+                border-left: 3px solid var(--primary-color);
               "
             >
-              <div style="color: #4caf50; margin-bottom: 4px">解析:</div>
+              <div
+                style="
+                  color: var(--primary-color);
+                  margin-bottom: 4px;
+                  font-weight: 600;
+                "
+              >
+                解析:
+              </div>
               {{ record.question.explanation }}
             </div>
           </div>

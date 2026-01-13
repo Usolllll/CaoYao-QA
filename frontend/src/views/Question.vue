@@ -65,13 +65,13 @@
                 <van-icon
                   v-if="key === correctAnswer"
                   name="success"
-                  color="#4caf50"
+                  color="#c8102e"
                   size="20"
                 />
                 <van-icon
                   v-else-if="key === userAnswer"
                   name="cross"
-                  color="#f44336"
+                  color="#dc143c"
                   size="20"
                 />
               </template>
@@ -82,7 +82,7 @@
           <div style="margin: 20px 0; text-align: center">
             <van-icon
               :name="isCorrect ? 'checked' : 'cross'"
-              :color="isCorrect ? '#4caf50' : '#f44336'"
+              :color="isCorrect ? '#c8102e' : '#dc143c'"
               size="48"
             />
             <div style="margin-top: 12px; font-size: 18px; font-weight: bold">
@@ -204,3 +204,39 @@ onMounted(() => {
   loadQuestion();
 });
 </script>
+
+<style scoped>
+.result-card {
+  text-align: center;
+  padding: 32px 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(200, 16, 46, 0.05) 0%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  border-radius: 16px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.result-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.result-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.correct-answer {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.wrong-answer {
+  color: var(--danger-color);
+  font-weight: bold;
+}
+</style>

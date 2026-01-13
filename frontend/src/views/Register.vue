@@ -108,4 +108,35 @@ const goBack = () => {
 .content {
   padding-top: 16px;
 }
+
+.login-header {
+  text-align: center;
+  padding: 60px 0 40px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #c8102e 0%, #e63946 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* 输入框毛玻璃效果 */
+.van-cell-group--inset {
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 16, 46, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 </style>

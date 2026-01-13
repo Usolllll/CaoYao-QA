@@ -35,14 +35,7 @@
           >
             登录
           </van-button>
-          <van-button
-            round
-            block
-            plain
-            type="primary"
-            @click="goToRegister"
-            style="margin-top: 12px"
-          >
+          <van-button round block class="register-btn" @click="goToRegister">
             注册账号
           </van-button>
         </div>
@@ -92,14 +85,43 @@ const goToRegister = () => {
 }
 
 .title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
-  color: #4caf50;
+  background: linear-gradient(135deg, #c8102e 0%, #e63946 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 8px;
+  letter-spacing: 2px;
 }
 
 .subtitle {
-  font-size: 14px;
-  color: #999;
+  font-size: 15px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* 输入框毛玻璃效果 */
+.van-cell-group--inset {
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 16, 46, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 注册按钮白色样式 */
+.register-btn {
+  margin-top: 12px;
+  background: white !important;
+  color: #c8102e !important;
+  border: 1px solid #c8102e !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.register-btn:active {
+  background: #f5f5f5 !important;
+  transform: scale(0.98);
 }
 </style>
