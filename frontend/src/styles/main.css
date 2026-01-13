@@ -1,0 +1,116 @@
+/* 全局样式 */
+:root {
+  --primary-color: #4caf50;
+  --danger-color: #f44336;
+  --warning-color: #ff9800;
+  --info-color: #2196f3;
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --border-color: #e0e0e0;
+}
+
+html,
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* 页面容器 */
+.page-container {
+  min-height: 100vh;
+  padding-bottom: 60px;
+  background-color: var(--bg-color);
+}
+
+/* 内容区域 */
+.content {
+  padding: 16px;
+}
+
+/* 卡片样式 */
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 按钮样式 */
+.btn-full {
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* 统计卡片 */
+.stats-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.stats-item {
+  text-align: center;
+}
+
+.stats-value {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.stats-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* 题目选项 */
+.option-item {
+  margin-bottom: 12px;
+}
+
+/* 解析框 */
+.explanation-box {
+  background: #f8f9fa;
+  border-left: 4px solid var(--primary-color);
+  padding: 16px;
+  margin-top: 16px;
+  border-radius: 4px;
+}
+
+.explanation-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+}
+
+/* 答题历史 */
+.history-item {
+  background: white;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.correct {
+  color: var(--primary-color);
+}
+
+.incorrect {
+  color: var(--danger-color);
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
+.empty-state-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
