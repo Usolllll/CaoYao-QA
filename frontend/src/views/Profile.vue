@@ -3,6 +3,44 @@
     <van-nav-bar title="个人中心" />
 
     <div class="content">
+      <!-- 用户统计卡片 -->
+      <div class="stats-card">
+        <van-row gutter="20">
+          <van-col span="8">
+            <div class="stats-item">
+              <div class="stats-value">
+                {{ statistics?.total_questions || 0 }}
+              </div>
+              <div class="stats-label">总题数</div>
+            </div>
+          </van-col>
+          <van-col span="8">
+            <div class="stats-item">
+              <div class="stats-value">
+                {{ statistics?.correct_answers || 0 }}
+              </div>
+              <div class="stats-label">正确数</div>
+            </div>
+          </van-col>
+          <van-col span="8">
+            <div class="stats-item">
+              <div class="stats-value">{{ accuracyRate }}%</div>
+              <div class="stats-label">正确率</div>
+            </div>
+          </van-col>
+        </van-row>
+        <van-divider
+          style="margin: 16px 0; border-color: rgba(255, 255, 255, 0.3)"
+        />
+        <div style="text-align: center">
+          <span style="font-size: 14px">连续学习 </span>
+          <span style="font-size: 24px; font-weight: bold">{{
+            statistics?.continuous_days || 0
+          }}</span>
+          <span style="font-size: 14px"> 天</span>
+        </div>
+      </div>
+
       <!-- 用户信息卡片 -->
       <div class="card">
         <van-cell-group>
@@ -11,26 +49,6 @@
           <van-cell
             title="注册时间"
             :value="formatDate(profile?.user?.created_at)"
-          />
-        </van-cell-group>
-      </div>
-
-      <!-- 学习统计 -->
-      <div class="card">
-        <h3 style="margin-bottom: 16px">学习统计</h3>
-        <van-cell-group>
-          <van-cell
-            title="累计答题"
-            :value="`${statistics?.total_questions || 0} 题`"
-          />
-          <van-cell
-            title="正确题数"
-            :value="`${statistics?.correct_answers || 0} 题`"
-          />
-          <van-cell title="正确率" :value="`${accuracyRate}%`" />
-          <van-cell
-            title="连续学习"
-            :value="`${statistics?.continuous_days || 0} 天`"
           />
         </van-cell-group>
       </div>

@@ -1,42 +1,14 @@
 <template>
   <div class="page-container">
     <div class="content">
-      <!-- 用户统计卡片 -->
-      <div class="stats-card">
-        <van-row gutter="20">
-          <van-col span="8">
-            <div class="stats-item">
-              <div class="stats-value">
-                {{ statistics?.total_questions || 0 }}
-              </div>
-              <div class="stats-label">总题数</div>
-            </div>
-          </van-col>
-          <van-col span="8">
-            <div class="stats-item">
-              <div class="stats-value">
-                {{ statistics?.correct_answers || 0 }}
-              </div>
-              <div class="stats-label">正确数</div>
-            </div>
-          </van-col>
-          <van-col span="8">
-            <div class="stats-item">
-              <div class="stats-value">{{ accuracyRate }}%</div>
-              <div class="stats-label">正确率</div>
-            </div>
-          </van-col>
-        </van-row>
-        <van-divider
-          style="margin: 16px 0; border-color: rgba(255, 255, 255, 0.3)"
-        />
-        <div style="text-align: center">
-          <span style="font-size: 14px">连续学习 </span>
-          <span style="font-size: 24px; font-weight: bold">{{
-            statistics?.continuous_days || 0
-          }}</span>
-          <span style="font-size: 14px"> 天</span>
-        </div>
+      <!-- 标题区 -->
+      <div class="title-card">
+        <h2 style="margin: 0; font-size: 24px; font-weight: bold">
+          草药和红色精神问答
+        </h2>
+        <p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.8">
+          学习中草药知识，弘扬红色精神
+        </p>
       </div>
 
       <!-- 功能区 -->
@@ -118,30 +90,13 @@
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
-import { getStatistics } from "@/api/user";
 import { getCategories } from "@/api/question";
 
 const router = useRouter();
 const userStore = useUserStore();
 const active = ref(0);
 
-const statistics = ref(null);
 const categories = ref([]);
-
-const accuracyRate = computed(() => {
-  if (!statistics.value || statistics.value.total_questions === 0) return 0;
-  return Math.round(statistics.value.accuracy_rate);
-});
-
-const loadStatistics = async () => {
-  try {
-    const res = await getStatistics();
-    statistics.value = res.data;
-    userStore.updateStatistics(res.data);
-  } catch (error) {
-    console.error("Failed to load statistics:", error);
-  }
-};
 
 const loadCategories = async () => {
   try {
@@ -165,7 +120,6 @@ const startQuizByDifficulty = (difficulty) => {
 };
 
 onMounted(() => {
-  loadStatistics();
   loadCategories();
 });
 </script>
@@ -173,5 +127,15 @@ onMounted(() => {
 <style scoped>
 .content {
   padding-top: 16px;
+}
+
+.title-card {
+  margin: 16px;
+  padding: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 </style>
