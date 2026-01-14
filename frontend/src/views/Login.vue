@@ -1,12 +1,12 @@
 <template>
   <div class="page-container">
     <div class="content">
-      <div class="login-header">
-        <h1 class="title">草药问答</h1>
-        <p class="subtitle">学习中草药知识</p>
+      <div class="title-card">
+        <h1 class="title-main">草药问答</h1>
+        <p class="title-sub">学习中草药知识 · 弘扬红色精神</p>
       </div>
 
-      <van-form @submit="onSubmit">
+      <van-form @submit="onSubmit" class="card">
         <van-cell-group inset>
           <van-field
             v-model="formData.username"
@@ -81,23 +81,20 @@ const goToRegister = () => {
 <style scoped>
 .login-header {
   text-align: center;
-  padding: 60px 0 40px;
+  padding: 80px 0 50px;
 }
 
 .title {
   font-size: 36px;
-  font-weight: bold;
-  background: linear-gradient(135deg, #c8102e 0%, #e63946 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 8px;
+  font-weight: 800;
+  color: #c62828;
+  margin-bottom: 12px;
   letter-spacing: 2px;
 }
 
 .subtitle {
-  font-size: 15px;
-  color: #666;
+  font-size: 16px;
+  color: #6b7280;
   font-weight: 500;
 }
 

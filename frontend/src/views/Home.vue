@@ -17,58 +17,87 @@
         </van-button>
       </div>
 
-      <!-- 分类选择 -->
-      <div class="card" v-if="categories.length > 0">
-        <h3 style="margin-bottom: 12px">选择分类</h3>
-        <van-grid :column-num="3" :border="false">
-          <van-grid-item
+      <!-- 分类选择 (Horizontal Scroll) -->
+      <div v-if="categories.length > 0">
+        <h3
+          style="
+            margin: 0 0 16px 4px;
+            font-weight: 600;
+            color: var(--text-primary);
+          "
+        >
+          <span
+            style="
+              display: inline-block;
+              width: 6px;
+              height: 6px;
+              background: var(--accent-gold);
+              vertical-align: middle;
+              margin-right: 12px;
+              border-radius: 50%;
+            "
+          ></span>
+          选择分类
+        </h3>
+        <div class="category-scroll-container">
+          <div
             v-for="category in categories"
             :key="category"
-            :text="category"
+            class="category-card-scroll"
+            :class="{ 'shanxi-card': category === '山西' }"
             @click="startQuizByCategory(category)"
-          />
-        </van-grid>
+          >
+            <van-icon :name="getCategoryIcon(category)" class="category-icon" />
+            <div class="category-name">{{ category }}</div>
+          </div>
+        </div>
       </div>
 
       <!-- 难度选择 -->
-      <div class="card">
-        <h3 style="margin-bottom: 12px">选择难度</h3>
-        <van-row gutter="12">
-          <van-col span="8">
-            <van-button
-              plain
-              type="success"
-              block
-              @click="startQuizByDifficulty('easy')"
-            >
-              简单
-            </van-button>
-          </van-col>
-          <van-col span="8">
-            <van-button
-              plain
-              type="warning"
-              block
-              @click="startQuizByDifficulty('medium')"
-            >
-              中等
-            </van-button>
-          </van-col>
-          <van-col span="8">
-            <van-button
-              plain
-              block
-              style="
-                color: #fff;
-                background: var(--primary-color);
-                border-color: var(--primary-color);
-              "
-              @click="startQuizByDifficulty('hard')"
-            >
-              困难
-            </van-button>
-          </van-col>
-        </van-row>
+      <div style="margin-top: 24px">
+        <h3
+          style="
+            margin: 0 0 16px 4px;
+            font-weight: 600;
+            color: var(--text-primary);
+          "
+        >
+          <span
+            style="
+              display: inline-block;
+              width: 4px;
+              height: 16px;
+              background: var(--accent-gold);
+              vertical-align: middle;
+              margin-right: 8px;
+              border-radius: 2px;
+            "
+          ></span>
+          选择难度
+        </h3>
+        <div class="difficulty-group">
+          <div
+            class="difficulty-card easy-mode"
+            :class="{ active: false }"
+            @click="startQuizByDifficulty('easy')"
+          >
+            简单
+          </div>
+          <div
+            class="difficulty-card medium-mode"
+            :class="{ active: false }"
+            @click="startQuizByDifficulty('medium')"
+          >
+            中等
+          </div>
+          <div
+            class="difficulty-card hard-mode"
+            :class="{ active: false }"
+            @click="startQuizByDifficulty('hard')"
+          >
+            困难
+          </div>
+        </div>
       </div>
     </div>
 
@@ -92,6 +121,22 @@ const userStore = useUserStore();
 const active = ref(0);
 
 const categories = ref([]);
+
+// 图标映射表
+const categoryIcons = {
+  红船精神: "guide-o", // 指引方向
+  井冈山精神: "flag-o", // 红旗飘飘
+  延安精神: "fire-o", // 革命火种
+  西柏坡精神: "todo-list-o", // 运筹帷幄
+  抗美援朝精神: "shield-o", // 保家卫国
+  两弹一星精神: "star-o", // 科技之星
+  抗疫精神: "like-o", // 生命至上
+  山西: "hotel-o", // 古建晋商
+};
+
+const getCategoryIcon = (name) => {
+  return categoryIcons[name] || "flower-o";
+};
 
 const loadCategories = async () => {
   try {
@@ -123,53 +168,5 @@ onMounted(() => {
 .content {
   padding-top: 16px;
 }
-
-.title-card {
-  margin: 16px;
-  padding: 32px 24px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  border-left: 4px solid #c8102e;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  position: relative;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.title-card:active {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.title-main {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 600;
-  color: #c8102e;
-  letter-spacing: 1px;
-}
-
-.title-sub {
-  margin: 10px 0 0 0;
-  font-size: 14px;
-  color: #666;
-  font-weight: 400;
-  line-height: 1.6;
-}
-
-.title-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(200, 16, 46, 0.02) 0%,
-    transparent 100%
-  );
-  pointer-events: none;
-  border-radius: 16px;
-}
+/* Title card styles removed to use main.css global styles */
 </style>

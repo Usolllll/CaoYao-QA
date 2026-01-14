@@ -1,293 +1,463 @@
-/* 全局样式 - 红色精神主题 */
+/* 全局样式 - 现代新中式 V4 (Glassmorphism + Texture) */
 :root {
-  --primary-color: #c8102e;
-  --primary-light: #e63946;
-  --primary-gradient: linear-gradient(
-    135deg,
-    #c8102e 0%,
-    #e63946 50%,
-    #ff6b6b 100%
-  );
-  --secondary-color: #8b0000;
-  --danger-color: #dc143c;
-  --warning-color: #ff6347;
-  --info-color: #cd5c5c;
-  --bg-color: #fafafa;
-  --bg-gradient: linear-gradient(180deg, #ffffff 0%, #fff5f5 100%);
-  --text-color: #2d2d2d;
-  --text-light: #666;
-  --border-color: #ffe4e1;
-  --card-shadow: 0 4px 12px rgba(200, 16, 46, 0.1);
-  --herb-green: #556b2f;
-  --herb-gold: #daa520;
+  /* 品牌色 - 故宫红 #C04851 */
+  --primary-color: #c04851;
+  --primary-dark: #9e3740;
+  --primary-light: #f9ebeb;
 
-  /* Vant 组件主题变量覆盖 */
-  --van-primary-color: #c8102e;
-  --van-success-color: #c8102e;
-  --van-danger-color: #dc143c;
-  --van-warning-color: #ff6347;
-  --van-info-color: #cd5c5c;
-  --van-text-color: #2d2d2d;
-  --van-active-color: #f7f8fa;
-  --van-active-opacity: 0.7;
-  --van-disabled-opacity: 0.5;
-  --van-background-color: #fafafa;
-  --van-background-2: #fff5f5;
-  --van-padding-base: 4px;
-  --van-padding-xs: 8px;
-  --van-padding-sm: 12px;
-  --van-padding-md: 16px;
-  --van-padding-lg: 24px;
-  --van-padding-xl: 32px;
-  --van-border-color: #ffe4e1;
-  --van-border-radius-sm: 8px;
-  --van-border-radius-md: 12px;
-  --van-border-radius-lg: 16px;
-  --van-border-radius-max: 999px;
+  /* 按钮渐变 - 深红到砖红 */
+  --btn-gradient: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+
+  /* 辅助色 */
+  --accent-gold: #d4af37;
+  --accent-green: #2b5f48;
+
+  --success-color: #558b2f;
+  --warning-color: #ff8f00;
+  --danger-color: #c04851;
+  --info-color: #0277bd;
+
+  /* 背景色 */
+  --bg-body: #fdfbf7;
+
+  /* 文字颜色 */
+  --text-primary: #2c2c2c;
+  --text-secondary: #5d5d5d;
+  --text-tertiary: #999999;
+
+  /* 圆角 */
+  --radius-card: 16px;
+  --radius-btn: 8px;
+
+  /* Vant 覆盖 */
+  --van-primary-color: var(--primary-color);
+  --van-success-color: var(--success-color);
+  --van-danger-color: var(--danger-color);
+  --van-warning-color: var(--warning-color);
+  --van-text-color: var(--text-primary);
+  --van-background-2: rgba(255, 255, 255, 0.6); /* 半透明背景 */
+  --van-button-default-background: rgba(255, 255, 255, 0.8);
 }
 
 html,
 body {
-  background: var(--bg-gradient);
-  color: var(--text-color);
+  /* 多层浅色背景 + 纸张纹理 */
+  background-color: var(--bg-body);
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"),
+    linear-gradient(120deg, #fdfbf7 0%, #f8f6f1 100%);
+
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-html::before,
 body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 15% 20%, rgba(200, 16, 46, 0.02) 0%, transparent 15%),
-    radial-gradient(circle at 85% 15%, rgba(230, 57, 70, 0.015) 0%, transparent 12%),
-    radial-gradient(circle at 45% 35%, rgba(200, 16, 46, 0.018) 0%, transparent 10%),
-    radial-gradient(circle at 65% 55%, rgba(220, 20, 60, 0.02) 0%, transparent 18%),
-    radial-gradient(circle at 25% 75%, rgba(230, 57, 70, 0.015) 0%, transparent 14%),
-    radial-gradient(circle at 90% 80%, rgba(200, 16, 46, 0.018) 0%, transparent 16%),
-    radial-gradient(circle at 10% 50%, rgba(230, 57, 70, 0.012) 0%, transparent 20%),
-    radial-gradient(circle at 55% 85%, rgba(220, 20, 60, 0.015) 0%, transparent 12%),
-    radial-gradient(circle at 75% 25%, rgba(200, 16, 46, 0.02) 0%, transparent 15%),
-    radial-gradient(circle at 35% 60%, rgba(230, 57, 70, 0.018) 0%, transparent 13%),
-    radial-gradient(circle at 50% 10%, rgba(220, 20, 60, 0.015) 0%, transparent 18%),
-    radial-gradient(circle at 20% 90%, rgba(200, 16, 46, 0.012) 0%, transparent 16%);
-  background-size: 100% 100%;
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: 0;
-  filter: contrast(1.1) brightness(1.02);
+  display: none;
 }
 
-/* 页面容器 */
 .page-container {
   min-height: 100vh;
-  padding-bottom: 60px;
-  background: transparent;
+  /* 防止内容被底部导航栏遮挡 */
+  padding-bottom: calc(90px + constant(safe-area-inset-bottom));
+  padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  position: relative;
+  z-index: 1;
+  overflow: hidden; /* 防止水印溢出 */
+}
+
+/* 红色精神五角星背景水印 (全局) */
+.page-container::before {
+  content: "";
+  position: fixed;
+  top: 38%;
+  right: -25%;
+  width: 100vw;
+  height: 100vw;
+  max-width: 600px;
+  max-height: 600px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23B22222' d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.15; /* 显著提升透明度 */
+  filter: blur(4px); /* 减少模糊，保留形状 */
+  z-index: -1; /* 这里设为 -1 确保在最底层，且 page-container z-index: 1 会建立层叠上下文 */
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+.content {
+  padding: 24px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 通用卡片 - 玻璃拟态 (Glassmorphism) */
+.card,
+.history-item,
+.option-item,
+.explanation-box {
+  background: rgba(255, 255, 255, 0.65); /* 半透明白 */
+  backdrop-filter: blur(12px); /* 毛玻璃模糊 */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6); /* 1px 白色半透明描边 */
+  border-radius: var(--radius-card);
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  /* 极浅柔和阴影 */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* 交互悬浮效果 */
+.van-button:not(.van-button--disabled):not(.van-button--loading):hover,
+.category-card-scroll:hover,
+.difficulty-card:hover,
+.option-item:hover,
+.history-item:hover {
+  transform: translateY(-4px);
+  /* 悬浮阴影加深 */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  z-index: 10;
+}
+
+.card h3 {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* 标题左侧装饰 - 金色小圆点 */
+.card h3::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+/* Banner 标题区 - 古法宣纸风格 + 中式回纹边框 */
+.title-card {
+  text-align: center;
+  padding: 48px 24px 32px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+
+  /* 古法宣纸纹理渐变 */
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f2ed 100%);
+  /* 漂浮感长投影 */
+  box-shadow: 0 20px 50px rgba(178, 34, 34, 0.05);
+
+  border-radius: 16px;
+  /* 极细外边框 */
+  border: 1px solid rgba(192, 72, 81, 0.1);
+}
+
+/* 中式四角回纹/包角装饰 (替代原左侧红条) */
+.title-card::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border-radius: 8px;
+  pointer-events: none;
+
+  /* 使用渐变绘制四个直角边框 */
+  background: linear-gradient(to right, #c04851 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, #c04851 2px, transparent 2px) 0 0,
+    linear-gradient(to left, #c04851 2px, transparent 2px) 100% 0,
+    linear-gradient(to bottom, #c04851 2px, transparent 2px) 100% 0,
+    linear-gradient(to right, #c04851 2px, transparent 2px) 0 100%,
+    linear-gradient(to top, #c04851 2px, transparent 2px) 0 100%,
+    linear-gradient(to left, #c04851 2px, transparent 2px) 100% 100%,
+    linear-gradient(to top, #c04851 2px, transparent 2px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: 24px 24px; /* 角标大小 */
+  opacity: 0.6;
+}
+
+/* 右上角半透明印章装饰 */
+.title-card::after {
+  content: "药";
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  font-family: "STKaiti", "SimSun", serif;
+  font-size: 140px;
+  font-weight: bold;
+  color: rgba(192, 72, 81, 0.05); /* 极淡的红色印章 */
+  transform: rotate(15deg);
+  pointer-events: none;
+  z-index: 0;
+  border: 4px solid rgba(192, 72, 81, 0.05);
+  border-radius: 12px;
+  padding: 10px;
+  line-height: 1;
+}
+
+.title-main {
+  font-family: "SimSun", "STKaiti", serif; /* 宋体/楷体 */
+  font-weight: 700;
+  font-size: 34px;
+  /* 增加字间距 */
+  letter-spacing: 4px;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+
+  /* 微弱浮雕感 */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8),
+    -1px -1px 2px rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 1;
 }
 
-/* 内容区域 */
-.content {
-  padding: 16px;
-}
-
-/* 卡片样式 */
-.card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: var(--card-shadow);
-  border: 1px solid rgba(200, 16, 46, 0.08);
-  backdrop-filter: blur(10px);
-}
-
-/* 按钮样式 */
-.btn-full {
-  width: 100%;
-  margin-top: 16px;
-}
-
-/* 统计卡片 */
-.stats-card {
-  background: linear-gradient(135deg, #c8102e 0%, #e63946 50%, #ff6b6b 100%);
-  color: white;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 16px;
-  box-shadow: 0 8px 24px rgba(200, 16, 46, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.stats-card::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-.stats-item {
-  text-align: center;
-}
-
-.stats-value {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.stats-label {
+.title-sub {
   font-size: 14px;
-  opacity: 0.9;
+  font-weight: 400;
+  /* 颜色调浅，形成层级 */
+  color: var(--text-tertiary);
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
 }
 
-/* 题目选项 */
-.option-item {
-  margin-bottom: 12px;
-}
-
-/* 解析框 */
-.explanation-box {
-  background: linear-gradient(
-    135deg,
-    rgba(200, 16, 46, 0.05) 0%,
-    rgba(255, 255, 255, 0.8) 100%
-  );
-  border-left: 4px solid var(--primary-color);
-  padding: 16px;
-  margin-top: 16px;
-  border-radius: 8px;
-  backdrop-filter: blur(5px);
-}
-
-.explanation-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: var(--primary-color);
-  font-size: 16px;
-}
-
-/* 答题历史 */
-.history-item {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 16px;
-  margin-bottom: 12px;
-  border-radius: 12px;
-  box-shadow: var(--card-shadow);
-  border: 1px solid rgba(200, 16, 46, 0.08);
-  backdrop-filter: blur(10px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.history-item:active {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(200, 16, 46, 0.15);
-}
-
-.correct {
-  color: var(--primary-color);
-}
-
-.incorrect {
-  color: var(--danger-color);
-}
-
-/* 空状态 */
-.empty-state {
-  text-align: center;
-  padding: 40px 20px;
-  color: #999;
-}
-
-.empty-state-icon {
-  font-size: 64px;
-  margin-bottom: 16px;
-}
-
-/* 按钮增强样式 */
+/* 按钮样式 - 深红渐变 + 弥散阴影 */
 .van-button--primary {
-  background: linear-gradient(135deg, #c8102e 0%, #e63946 100%);
+  background: var(--btn-gradient);
   border: none;
-  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+  font-weight: 600;
+  letter-spacing: 1px;
+  /* 弥散状浅阴影，与按钮同色系 */
+  box-shadow: 0 8px 20px rgba(198, 40, 40, 0.3);
+  border-radius: var(--radius-btn);
   transition: all 0.3s ease;
 }
 
 .van-button--primary:active {
-  box-shadow: 0 2px 8px rgba(200, 16, 46, 0.4);
-  transform: translateY(1px);
+  transform: scale(0.98);
+  box-shadow: 0 4px 12px rgba(198, 40, 40, 0.4);
 }
 
-.van-button--danger {
-  background: linear-gradient(135deg, #dc143c 0%, #ff6347 100%);
-  border: none;
-  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
+.van-button--round {
+  border-radius: 99px;
 }
 
-/* 导航栏样式 */
+/* 分类列表 - 左右滑动 (Horizontal Scroll) */
+.category-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  /* 负 margin 实现边缘贴合，padding 保证阴影不被裁剪 */
+  margin: 0 -20px 24px -20px;
+  padding: 8px 20px 24px 20px;
+
+  /* 隐藏滚动条 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.category-card-scroll {
+  /* 玻璃拟态小卡片 */
+  min-width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.category-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  opacity: 0.9;
+}
+
+.category-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* 难度选择 - 胶囊切换器 */
+.difficulty-group {
+  display: flex;
+  gap: 16px;
+  background: transparent;
+}
+
+.difficulty-card {
+  flex: 1;
+  text-align: center;
+  padding: 16px 0;
+  border-radius: 12px;
+
+  /* 未选中也带一点玻璃感 */
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.difficulty-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* 导航栏 - 新中式优化 */
 .van-nav-bar {
-  background: linear-gradient(135deg, #c8102e 0%, #e63946 100%);
+  background-color: rgba(255, 252, 248, 0.8) !important; /* 米白色半透明 */
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important; /* 微弱金色边框 */
+}
+
+.van-nav-bar::after {
+  display: none;
 }
 
 .van-nav-bar__title {
-  color: white !important;
-  font-weight: 600;
+  color: #4a0404 !important; /* 墨红 */
+  font-family: "STKaiti", "SimSun", serif !important; /* 楷体/宋体 */
+  font-weight: 600 !important;
+  font-size: 18px !important;
 }
 
 .van-nav-bar .van-icon {
-  color: white !important;
+  color: #4a0404 !important;
 }
 
-/* 底部标签栏 */
+/* 底部标签栏 - 玻璃拟态 */
+.van-tabbar {
+  height: 70px; /* 稍微加高 */
+  border-top: none;
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.03);
+}
+.van-tabbar-item {
+  color: var(--text-tertiary);
+  background: transparent;
+}
 .van-tabbar-item--active {
   color: var(--primary-color);
+  font-weight: 600;
 }
 
-/* 标签样式 */
-.van-tag--primary {
-  background: linear-gradient(
-    135deg,
-    rgba(200, 16, 46, 0.9) 0%,
-    rgba(230, 57, 70, 0.9) 100%
-  );
+/* 答题页 & 详情页修正 */
+.option-item {
+  padding: 4px 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.explanation-title {
+  color: var(--accent-green);
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* 统计卡片 - 独特的深红磨砂 */
+.stats-card {
+  background: rgba(198, 40, 40, 0.9);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 20px;
+  padding: 32px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 16px 32px rgba(198, 40, 40, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stats-value {
+  font-size: 42px;
+  font-weight: 600;
+  font-family: Georgia, serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 输入框 */
+.van-field {
+  background: rgba(255, 255, 255, 0.5); /* 半透明输入框 */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.van-field:focus-within {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(192, 72, 81, 0.1);
+}
+[class*="van-hairline"]::after {
   border: none;
 }
 
-/* 单元格样式 */
-.van-cell {
-  background: transparent;
+/* ɽ����ɫ��Ƭ - ��װ��� */
+/* 山西特色卡片 - 红底白字 */
+.category-card-scroll.shanxi-card {
+  background: #b22222 !important; /* 朱砂红 */
+  border-color: #b22222 !important;
+  box-shadow: 0 8px 20px rgba(178, 34, 34, 0.4) !important;
 }
 
-.van-cell-group {
-  background: transparent;
+.category-card-scroll.shanxi-card .category-icon {
+  color: #fff !important;
+  opacity: 1;
 }
 
-/* 网格样式 */
-.van-grid-item__content {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(200, 16, 46, 0.1);
-  transition: all 0.3s ease;
+.category-card-scroll.shanxi-card .category-name {
+  color: #fff !important;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.van-grid-item__content:active {
-  transform: scale(0.95);
-  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.2);
-}
-
-.van-grid-item__text {
-  color: var(--primary-color);
-  font-weight: 500;
+.category-card-scroll.shanxi-card:hover {
+  background: #a52020 !important; /* 悬停加深 */
+  box-shadow: 0 12px 24px rgba(178, 34, 34, 0.6) !important;
+  transform: translateY(-4px) scale(1.02);
 }
